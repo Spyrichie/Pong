@@ -1,0 +1,114 @@
+[gd_scene load_steps=16 format=3 uid="uid://wb0cyky7fwnq"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_onv37"]
+[ext_resource type="Texture2D" uid="uid://dpqx7fp4m5qd0" path="res://Art/Background.png" id="2_gs7fv"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="3_82g10"]
+[ext_resource type="Texture2D" uid="uid://cc0quv6wqenki" path="res://Art/Paddle.png" id="4_fwhor"]
+[ext_resource type="Script" path="res://Scripts/Ball.gd" id="5_ctn8p"]
+[ext_resource type="Script" path="res://Scripts/AI.gd" id="5_nwoal"]
+[ext_resource type="Texture2D" uid="uid://cismjay5j754q" path="res://Art/Ball.png" id="6_j0jd2"]
+[ext_resource type="Script" path="res://Scripts/Goal.gd" id="7_ctkk6"]
+[ext_resource type="FontFile" uid="uid://catmxk8mk6a2a" path="res://windows_command_prompt.ttf" id="8_6up6q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l26oi"]
+size = Vector2(640, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrxg7"]
+size = Vector2(640, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4uj0"]
+size = Vector2(16, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvqxl"]
+size = Vector2(16, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nv7"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyway"]
+size = Vector2(32, 480)
+
+[node name="SinglePlayer" type="Node2D"]
+script = ExtResource("1_onv37")
+
+[node name="Background" type="StaticBody2D" parent="."]
+position = Vector2(320, 240)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_gs7fv")
+
+[node name="TopCollisionBox" type="CollisionShape2D" parent="Background"]
+position = Vector2(0, -232)
+shape = SubResource("RectangleShape2D_l26oi")
+
+[node name="BottomCollisionBox" type="CollisionShape2D" parent="Background"]
+position = Vector2(0, 232)
+shape = SubResource("RectangleShape2D_wrxg7")
+
+[node name="Player1" type="CharacterBody2D" parent="."]
+position = Vector2(616, 240)
+script = ExtResource("3_82g10")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+texture = ExtResource("4_fwhor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("RectangleShape2D_y4uj0")
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(24, 240)
+script = ExtResource("5_nwoal")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+texture = ExtResource("4_fwhor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("RectangleShape2D_vvqxl")
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(320, 248)
+script = ExtResource("5_ctn8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("6_j0jd2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("RectangleShape2D_r4nv7")
+
+[node name="P1Goal" type="Area2D" parent="."]
+position = Vector2(664, 240)
+collision_layer = 0
+script = ExtResource("7_ctkk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P1Goal"]
+shape = SubResource("RectangleShape2D_nyway")
+
+[node name="P2Goal" type="Area2D" parent="."]
+position = Vector2(-24, 240)
+collision_layer = 0
+script = ExtResource("7_ctkk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P2Goal"]
+shape = SubResource("RectangleShape2D_nyway")
+
+[node name="P1Score" type="Label" parent="."]
+offset_left = 336.0
+offset_top = 16.0
+offset_right = 640.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("8_6up6q")
+theme_override_font_sizes/font_size = 96
+text = "0"
+vertical_alignment = 1
+
+[node name="P2Score" type="Label" parent="."]
+offset_top = 16.0
+offset_right = 312.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("8_6up6q")
+theme_override_font_sizes/font_size = 96
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://8tfsdm23tjo0"]
+
+[ext_resource type="Script" path="res://Scripts/StartMenu.gd" id="1_ml0lg"]
+[ext_resource type="Texture2D" uid="uid://dpqx7fp4m5qd0" path="res://Art/Background.png" id="2_qxi25"]
+[ext_resource type="Texture2D" uid="uid://cc0quv6wqenki" path="res://Art/Paddle.png" id="3_jluxb"]
+[ext_resource type="FontFile" uid="uid://catmxk8mk6a2a" path="res://windows_command_prompt.ttf" id="4_n0038"]
+[ext_resource type="Theme" uid="uid://wnowcp8gbp0t" path="res://button.tres" id="5_cfmex"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_ml0lg")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+texture = ExtResource("2_qxi25")
+
+[node name="Paddle1" type="Sprite2D" parent="."]
+position = Vector2(24, 240)
+texture = ExtResource("3_jluxb")
+
+[node name="Paddle2" type="Sprite2D" parent="."]
+position = Vector2(616, 240)
+texture = ExtResource("3_jluxb")
+
+[node name="Score1" type="Label" parent="."]
+offset_left = 336.0
+offset_top = 16.0
+offset_right = 640.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("4_n0038")
+theme_override_font_sizes/font_size = 96
+text = "0"
+vertical_alignment = 1
+
+[node name="Score2" type="Label" parent="."]
+offset_top = 16.0
+offset_right = 312.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("4_n0038")
+theme_override_font_sizes/font_size = 96
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 168.0
+offset_right = 272.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("4_n0038")
+theme_override_font_sizes/font_size = 32
+text = "Instructions"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 199.0
+offset_right = 235.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("4_n0038")
+theme_override_font_sizes/font_size = 16
+text = "Player 1: Arrow keys
+Player 2: WASD"
+
+[node name="MenuButtons" type="Node2D" parent="."]
+
+[node name="OnePlayer" type="Button" parent="MenuButtons"]
+offset_left = 352.0
+offset_top = 160.0
+offset_right = 544.0
+offset_bottom = 220.0
+focus_mode = 0
+theme = ExtResource("5_cfmex")
+theme_override_font_sizes/font_size = 48
+text = "1 Player"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TwoPlayer" type="Button" parent="MenuButtons"]
+offset_left = 352.0
+offset_top = 264.0
+offset_right = 544.0
+offset_bottom = 324.0
+focus_mode = 0
+theme = ExtResource("5_cfmex")
+theme_override_font_sizes/font_size = 48
+text = "2 Player"
+icon_alignment = 1
+expand_icon = true
+
+[node name="SoundToggle" type="CheckButton" parent="."]
+offset_left = 98.0
+offset_top = 244.0
+offset_right = 173.0
+offset_bottom = 268.0
+focus_mode = 0
+theme = ExtResource("5_cfmex")
+text = "Sound"
